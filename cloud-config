@@ -1,0 +1,14 @@
+#cloud-config
+
+hostname: coreos0
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDpMvjIz0FbYFAlIfPgsB/rX6LS6KYRGnxZoHRTk4PoKOfnnqJ+9T0lJ3ToZyDRqYpeY2pNVjfR6YNtyDRoBSwQMeRI4B/1kzcNtjwW34w6gUEWFJsAXARKKbeMdSIIMRA/PPbEXfLsTkpQSvjdBTOFSv1K7TqREsNVk51wuuML2RLse3Lqs4E/cxURMVQLc0A5g847uWAgGnLDh40i+jdU9dPnGO57QzJNGnO1ftUrbsvNdALDEWDXZ7noynCt0r1Rmv2ASZgv8XhIEV17z7eadkHpai2kGkOHyJ8NzRPyPFW1cTI27yhIUOIkHbytBLyH/IWz9ebWo7gXc4KbqSVX adibble@sf00523-ml.corp.qc
+coreos:
+  units:
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start
+  etcd:
+    name: coreos0
+    discovery: https://discovery.etcd.io/aaefb528260ed26e8c5b97b5feb6c887
